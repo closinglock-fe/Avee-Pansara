@@ -15,3 +15,8 @@ We're looking forward to seeing what you come up with!
 Best of luck,
 
 The Closinglock Frontend Team
+
+## Avee Pansara
+Thank you for giving me this opportunity. I am excited to work on this challenge and learn from you.
+
+Acknowledgement: I am looking forward to speaking with you tomorrow. 
