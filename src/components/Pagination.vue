@@ -48,27 +48,49 @@ const nextPage = () => {
 </script>
 
 <style scoped>
-.pagination {
+.pagination-container {
+    background-color: #fff;
+    border-top: 1px solid #e2e8f0;
+    padding: 12px 24px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 16px;
-    gap: 16px;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.pagesize-container, .pagination {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.875rem;
+    color: #64748b;
 }
 
 .pagination button {
-    padding: 8px 16px;
-    border: 1px solid black;
-    border-radius: 4px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 0.875rem;
+    color: #334155;
+    transition: all 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
 }
 
 .pagination button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+    background-color: #f1f5f9;
 }
 
 .pagination span {
     margin: 0 8px;
+    font-weight: 500;
 }
 </style>

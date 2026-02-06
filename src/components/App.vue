@@ -81,71 +81,89 @@ onMounted(async () => {
 <style scoped>
 .container {
     padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #334155;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Table Wrapper */
 .table-wrapper {
-    border: 1px solid black;
-    border-radius: 4px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.table-body {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .table-header {
-    padding: 12px;
     display: grid;
     grid-template-columns: 1fr 1.5fr 2fr 2fr;
-    background-color: #f4f4f4;
-    font-weight: bold;
-    border-bottom: 2px solid black;
-}
-
-.table-header > div:last-child {
-    border-right: none;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #64748b;
+    flex-shrink: 0;
 }
 
 .table-row {
     display: grid;
     grid-template-columns: 1fr 1.5fr 2fr 2fr;
-    border-bottom: 1px solid black;
-    align-items: center;
-}
-
-.table-row:nth-child(even) {
-    background-color: rgb(127, 218, 239);
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    transition: background-color 0.2s;
 }
 
 .table-row:hover {
-    background-color: #f1f1f1;
+    background-color: #f8fafc;
 }
 
 .table-row:last-child {
     border-bottom: none;
 }
+
 .table-cell {
     display: flex;
     align-items: center;
+    padding: 16px 24px;
     word-break: break-word;
+    font-size: 0.875rem;
 }
 
 .table-cell input {
     width: 100%;
     border-radius: 4px;
-    font-size: 0.9em;
+    font-size: 0.875rem;
+    border: 1px solid #e2e8f0; 
+    background: #f8fafc;
+    height: 40px;
+    padding-left: 16px;
 }
 
 .table-cell input:focus {
     outline: none;
-    border-color: #007bff;
+    border: 1px solid #007bff;
 }
 
 .table-cell > div {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .email-input {
     box-sizing: border-box;
-    margin: 6px;
-    height: 40px;
+    margin: 0;
+    height: auto;
     width: 100%;
 }
 </style>
