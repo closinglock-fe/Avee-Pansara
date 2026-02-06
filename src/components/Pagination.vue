@@ -2,7 +2,7 @@
     <div class="pagination-container">
     <div class="pagesize-container">
         <label for="pagesize">Page Size:</label>
-        <select id="pagesize" :value="pageSize" @change="emit('changePageSize', $event.target.value)">
+        <select id="pagesize" :value="pageSize" @change="emit('changePageSize', $event.target.value)" class="pagesize-select">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -65,6 +65,22 @@ const nextPage = () => {
     gap: 12px;
     font-size: 0.875rem;
     color: var(--text-secondary);
+}
+
+.pagesize-select {
+    padding: 6px 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagesize-select:focus {
+    border-color: var(--accent-color);
 }
 
 .pagination button {
