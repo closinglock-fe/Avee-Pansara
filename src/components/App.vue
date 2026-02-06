@@ -161,10 +161,10 @@ body {
 
 <style scoped>
 .container {
-    padding: 20px;
+    padding: 40px 100px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: var(--text-primary);
-    height: 90vh;
+    height: 95vh;
     display: flex;
     gap: 16px;
     flex-direction: column;

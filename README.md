@@ -15,3 +15,7 @@ A Vue.js 3 application displaying a paginated, sortable, and searchable user tab
 npm install
 npm run dev
 ```
+
+## Screenshot
+![User Table - Light Mode](image.png)
+![User Table - Dark Mode](image-1.png)
