@@ -1,22 +1,17 @@
+# Vue-powered View
+
 ## Intro
 
-Welcome to the Closinglock frontend technical challenge!
+Thank you for taking the time to come in to meet with the Closinglock engineering team! Here's an exercise to work through. As important as getting to a working example today might feel, we are really interested to see how you work and approach problems. Please feel free to think out loud or ask us questions.
 
-Thank you for taking the time to interview with our team and work on this challenge. We're excited to see what you can do.
+## Assignment
 
-To get started, clone this repo and push an update to the this README.md to acknowledge that you're set up and ready for the challenge. This will help us ensure that we're all on the same page and that you have a solid starting point.
+We have a legacy UI that we would like to migrate to Vue.
 
-The technical challenge will be pushed to this repo when the interview process begins. We ask that you push your work at the end of the allotted time, but you're welcome to push portions of your work as you solve some of the tasks.
+Create a Vue app that uses this [dummy API](https://dummyjson.com/users) to retrieve a list of users. Your app can look similar to what exists currently, and we're open to any improvements you can bring.
 
-This is an open-book challenge, so feel free to use any tools or IDE you feel comfortable with.
+This isn't a gotcha exercise, it's as straightforward as it sounds. The goal to generate some talking points about how you approach fundamentals.
 
-We're looking forward to seeing what you come up with!
+Let's aim to talk through where things are in thirty minutes.
 
-Best of luck,
-
-The Closinglock Frontend Team
-
-## Avee Pansara
-Thank you for giving me this opportunity. I am excited to work on this challenge and learn from you.
-
-Acknowledgement: I am looking forward to speaking with you tomorrow. 
+Good luck!
