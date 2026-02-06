@@ -49,8 +49,8 @@ const nextPage = () => {
 
 <style scoped>
 .pagination-container {
-    background-color: #fff;
-    border-top: 1px solid #e2e8f0;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
     padding: 12px 24px;
     display: flex;
     justify-content: space-between;
@@ -64,29 +64,29 @@ const nextPage = () => {
     align-items: center;
     gap: 12px;
     font-size: 0.875rem;
-    color: #64748b;
+    color: var(--text-secondary);
 }
 
 .pagination button {
     padding: 6px 12px;
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.875rem;
-    color: #334155;
+    color: var(--text-primary);
     transition: all 0.2s;
 }
 
 .pagination button:hover:not(:disabled) {
-    background-color: #f8fafc;
-    border-color: #cbd5e1;
+    background-color: var(--bg-hover);
+    border-color: var(--accent-color);
 }
 
 .pagination button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-    background-color: #f1f5f9;
+    background-color: var(--bg-hover);
 }
 
 .pagination span {
