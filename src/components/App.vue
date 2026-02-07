@@ -135,16 +135,16 @@ onMounted(async () => {
 }
 
 body.dark {
-    --bg-primary: #1e293b;
-    --bg-secondary: #0f172a;
-    --bg-header: #1e293b; 
-    --bg-hover: #334155;
-    --bg-body: #0f172a;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --border-color: #334155;
+    --bg-primary: #000000;
+    --bg-secondary: #1e19199a;
+    --bg-header: #1a1a1a; 
+    --bg-hover: #1f1f1f;
+    --bg-body: #000000;
+    --text-primary: #e0e0e0;
+    --text-secondary: #9ca3af;
+    --border-color: #333333;
     --accent-color: #60a5fa;
-    --input-bg: #1e293b;
+    --input-bg: #1a1a1a;
 }
 
 body {

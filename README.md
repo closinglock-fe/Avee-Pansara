@@ -18,4 +18,4 @@ npm run dev
 
 ## Screenshot
 ![User Table - Light Mode](image.png)
-![User Table - Dark Mode](image-1.png)
+![User Table - Dark Mode](image-2.png)

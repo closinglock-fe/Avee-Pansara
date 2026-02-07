@@ -91,6 +91,7 @@ function handleSort(column: string) {
     flex-direction: column;
     flex: 1;
     min-height: 0;
+    border: 1px solid var(--border-color);
 }
 
 .table-body {
@@ -102,7 +103,7 @@ function handleSort(column: string) {
     display: grid;
     grid-template-columns: 1fr 1.5fr 2fr 2fr;
     background-color: var(--bg-header);
-    border-bottom: 2px solid var(--border-color); /* Thicker border for separation */
+    border-bottom: 1px solid var(--border-color); /* Thicker border for separation */
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
