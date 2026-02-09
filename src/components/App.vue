@@ -14,6 +14,10 @@
             </button>
         </div>
     </div>
+    <div v-if="error" class="error-message">
+        {{ error }}
+        <button @click="fetchUsers">Retry</button>
+    </div>
     <UserTable 
         :users="users"
         :is-loading="isLoading"
@@ -33,21 +37,31 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import UserTable from './UserTable.vue';
-import type { User } from '../types/DummyUserApi';
-import { getUsers } from '../services/userService';
-const users = ref<User[]>([]);
-const pageSize =ref(30);
-const totalPages =  ref(0);
+import { useUsers } from '../composables/useUsers';
+
+const pageSize = ref(30);
 const currentPage = ref(1);
-const totalRecords = ref(0);
 const searchQuery = ref('');
 const sortBy = ref('');
 const sortOrder = ref<'asc' | 'desc'>('asc');
-const isLoading = ref(false);
 const isDark = ref(false);
-let searchTimeout: ReturnType<typeof setTimeout>;
+
+const { 
+    users, 
+    isLoading, 
+    error, 
+    totalRecords, 
+    totalPages, 
+    fetchUsers 
+} = useUsers({
+    pageSize,
+    currentPage,
+    searchQuery,
+    sortBy,
+    sortOrder
+});
 
 function toggleTheme() {
     isDark.value = !isDark.value;
@@ -58,7 +72,6 @@ function toggleTheme() {
     }
     localStorage.setItem('theme', isDark.value ? 'dark' : 'light');
 }
-
 
 function prevPage() {
     if (currentPage.value > 1) {
@@ -73,47 +86,11 @@ function nextPage() {
 }
 
 function changePageSize(newSize: number) {
-    console.log(newSize);
-    pageSize.value = newSize;
+    pageSize.value = Number(newSize);
     currentPage.value = 1;
 }
 
-async function fetchUsers() {
-    isLoading.value = true;
-    try {
-        const response = await getUsers(pageSize.value, (currentPage.value - 1) * pageSize.value, searchQuery.value, sortBy.value, sortOrder.value);
-        users.value = response.users.map((user: User) => {
-            return {
-                ...user,
-                address : user.address,
-            }
-        });
-
-        totalPages.value = Math.ceil(response.total / pageSize.value);
-        totalRecords.value = response.total;
-    } finally {
-        isLoading.value = false;
-    }
-}
-
-watch([currentPage, pageSize], () => {
-    fetchUsers();
-});
-
-watch([sortBy, sortOrder], () => {
-    currentPage.value = 1; 
-    fetchUsers(); 
-});
-
-watch(searchQuery, () => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-        currentPage.value = 1;
-        fetchUsers();
-    }, 300);
-});  
-
-onMounted(async () => {
+onMounted(() => {
    const savedTheme = localStorage.getItem('theme');
    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
        isDark.value = true;
@@ -222,5 +199,30 @@ body {
 
 .theme-toggle:hover {
     background-color: var(--bg-hover);
+}
+
+.error-message {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.error-message button {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error-message button:hover {
+    background: #ef4444;
+    color: white;
 }
 </style>

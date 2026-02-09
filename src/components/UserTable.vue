@@ -1,19 +1,23 @@
 <template>
     <div class="table-wrapper">
         <div class="table-header">
-            <div class="table-cell sortable" @click="handleSort('username')">
+            <div class="table-cell sortable" 
+                 @click="handleSort('username')">
                 Username 
                 <span v-if="sortBy === 'username'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
             </div>
-            <div class="table-cell sortable" @click="handleSort('firstName')">
+            <div class="table-cell sortable"
+                 @click="handleSort('firstName')">
                 Name
                 <span v-if="sortBy === 'firstName'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
             </div>
-            <div class="table-cell sortable" @click="handleSort('email')">
+            <div class="table-cell sortable"
+                 @click="handleSort('email')">
                 Email
                 <span v-if="sortBy === 'email'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
             </div>
-            <div class="table-cell sortable" @click="handleSort('address.city')">
+            <div class="table-cell sortable"
+                 @click="handleSort('address.city')">
                 Address
                 <span v-if="sortBy === 'address.city'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
             </div>
@@ -105,7 +109,7 @@ function handleSort(column: string) {
     display: grid;
     grid-template-columns: 1fr 1.5fr 2fr 2fr;
     background-color: var(--bg-header);
-    border-bottom: 1px solid var(--border-color); /* Thicker border for separation */
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;

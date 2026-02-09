@@ -1,12 +1,12 @@
 <template>
-    <div class="pagination-container">
+    <nav class="pagination-container" aria-label="Pagination Navigation">
         <div class="record-container">
             <label>Total Records:</label>
             <span class="record-value">{{ props.totalRecords }}</span>
         </div>
     <div class="pagesize-container">
         <label for="pagesize">Page Size:</label>
-        <select id="pagesize" :value="pageSize" @change="emit('changePageSize', $event.target.value)" class="pagesize-select">
+        <select id="pagesize" :value="pageSize" @change="emit('changePageSize', Number(($event.target as HTMLSelectElement).value))" class="pagesize-select" aria-label="Select page size">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -16,34 +16,28 @@
         </select>
     </div>
     <div class="pagination">
-        <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
-        <span>{{ currentPage }} / {{ totalPages }}</span>
-        <button @click="nextPage" :disabled="currentPage >= totalPages">Next</button>
+        <button @click="prevPage" :disabled="currentPage === 1" aria-label="Go to previous page">Previous</button>
+        <span aria-atomic="true" aria-live="polite">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button @click="nextPage" :disabled="currentPage >= totalPages" aria-label="Go to next page">Next</button>
     </div>
-    </div>
+    </nav>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-    currentPage: {
-        type: Number,
-        required: true
-    },
-    pageSize: {
-        type: Number,
-        required: true
-    },  
-    totalPages: {
-        type: Number,
-        required: true
-    },
-    totalRecords: {
-        type: Number,
-        required: true
-    }
-})
+const props = defineProps<{
+    currentPage: number;
+    pageSize: number;
+    totalPages: number;
+    totalRecords: number;
+}>();
 
-const emit = defineEmits(['prevPage', 'nextPage', 'changePageSize'])
+const emit = defineEmits<{
+    (e: 'prevPage'): void;
+    (e: 'nextPage'): void;
+    (e: 'changePageSize', size: number): void;
+}>();
+
+
 
 const prevPage = () => {
     emit('prevPage')
