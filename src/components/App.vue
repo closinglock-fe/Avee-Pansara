@@ -22,6 +22,7 @@
         :page-size="pageSize"
         :current-page="currentPage"
         :total-pages="totalPages"
+        :total-records="totalRecords"
         @update:sort-by="(val) => sortBy = val"
         @update:sort-order="(val) => sortOrder = val"
         @prev-page="prevPage"
@@ -40,6 +41,7 @@ const users = ref<User[]>([]);
 const pageSize =ref(30);
 const totalPages =  ref(0);
 const currentPage = ref(1);
+const totalRecords = ref(0);
 const searchQuery = ref('');
 const sortBy = ref('');
 const sortOrder = ref<'asc' | 'desc'>('asc');
@@ -87,7 +89,8 @@ async function fetchUsers() {
             }
         });
 
-        totalPages.value = Math.ceil(response.total / response.limit);
+        totalPages.value = Math.ceil(response.total / pageSize.value);
+        totalRecords.value = response.total;
     } finally {
         isLoading.value = false;
     }

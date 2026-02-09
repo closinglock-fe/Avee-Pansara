@@ -41,7 +41,8 @@
         <Pagination 
             :pageSize="pageSize" 
             :currentPage="currentPage" 
-            :totalPages="totalPages" 
+            :totalPages="totalPages"
+            :totalRecords="totalRecords" 
             @prevPage="$emit('prevPage')" 
             @nextPage="$emit('nextPage')" 
             @changePageSize="(size) => $emit('changePageSize', size)" 
@@ -61,6 +62,7 @@ const props = defineProps<{
     pageSize: number;
     currentPage: number;
     totalPages: number;
+    totalRecords: number;
 }>();
 
 const emit = defineEmits<{

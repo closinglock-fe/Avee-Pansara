@@ -1,5 +1,9 @@
 <template>
     <div class="pagination-container">
+        <div class="record-container">
+            <label>Total Records:</label>
+            <span class="record-value">{{ props.totalRecords }}</span>
+        </div>
     <div class="pagesize-container">
         <label for="pagesize">Page Size:</label>
         <select id="pagesize" :value="pageSize" @change="emit('changePageSize', $event.target.value)" class="pagesize-select">
@@ -14,13 +18,13 @@
     <div class="pagination">
         <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
         <span>{{ currentPage }} / {{ totalPages }}</span>
-        <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        <button @click="nextPage" :disabled="currentPage >= totalPages">Next</button>
     </div>
     </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
     currentPage: {
         type: Number,
         required: true
@@ -30,6 +34,10 @@ defineProps({
         required: true
     },  
     totalPages: {
+        type: Number,
+        required: true
+    },
+    totalRecords: {
         type: Number,
         required: true
     }
@@ -57,6 +65,8 @@ const nextPage = () => {
     align-items: center;
     flex-shrink: 0;
     margin-top: auto;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
 }
 
 .pagesize-container, .pagination {
@@ -108,5 +118,16 @@ const nextPage = () => {
 .pagination span {
     margin: 0 8px;
     font-weight: 500;
+}
+
+.record-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.record-value {
+    font-weight: 500;
+    color: var(--text-primary);
 }
 </style>
